@@ -30,7 +30,6 @@ public class Tarefa  implements Serializable {
 
 	public Tarefa() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Tarefa(Integer id, String titulo, String descricao, String responsavel, String prioridade, String data,
