@@ -1,8 +1,22 @@
 package com.estevo.tarefas.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Tarefa {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Tarefa  implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String titulo;
 	private String descricao;
@@ -10,6 +24,8 @@ public class Tarefa {
 	private String prioridade;
 	private String data;
 
+	@ManyToOne
+	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
 	public Tarefa() {
@@ -20,6 +36,7 @@ public class Tarefa {
 	public Tarefa(Integer id, String titulo, String descricao, String responsavel, String prioridade, String data,
 			Categoria categoria) {
 		super();
+		
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;
